@@ -1,0 +1,66 @@
+version: '3.9'
+
+services:
+  db:
+    image: postgres:17
+    container_name: cme-postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: "@manaus"
+      POSTGRES_DB: cme_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - cme-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  backend:
+    build: ./backend
+    container_name: cme-backend
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8000:8000"
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=@manaus
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_DB=cme_db
+      - SECRET_KEY=chave_secreta_para_jwt
+    volumes:
+      - ./backend:/app
+    networks:
+      - cme-network
+    restart: always
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: cme-frontend
+    ports:
+      - "3000:5173"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    working_dir: /app
+    command: npm run dev -- --host
+    environment:
+      - VITE_API_URL=http://backend:8000/api
+    networks:
+      - cme-network
+
+networks:
+  cme-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
