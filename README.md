@@ -56,28 +56,64 @@ Cada etapa pode ter status `concluído` ou `falha`.
 
 ## 📁 Estrutura do Projeto
 
-```text
+```
 cme-system/
 ├── backend/
 │   ├── app/
-│   │   ├── database/              # Configurações do banco
-│   │   ├── models/                # Modelos Pydantic e SQLAlchemy
-│   │   ├── repositories/          # Regras de negócio
-│   │   ├── routes/                # Rotas da API
-│   │   ├── utils/                 # Utilitários (auth, PDF/XLSX, etc.)
-│   │   └── main.py                # Entrada principal da API
-│   └── Dockerfile
+│   │   ├── __init__.py
+│   │   ├── main.py
+│   │   ├── models/
+│   │   │   ├── __init__.py
+│   │   │   ├── user.py
+│   │   │   └── process.py
+│   │   ├── routes/
+│   │   │   ├── user_routes.py
+│   │   │   └── process_routes.py
+│   │   ├── repositories/
+│   │   │   ├── user_repository.py
+│   │   │   └── process_repository.py
+│   │   ├── utils/
+│   │   │   ├── auth.py
+│   │   │   ├── serial_generator.py
+│   │   │   ├── xlsx_generator.py
+│   │   │   └── pdf_generator.py
+│   │   └── database.py
+│   ├── Dockerfile
+│   ├── requirements.txt
+│   └── .env
 │
 ├── frontend/
+│   ├── public/
 │   ├── src/
-│   │   ├── pages/                 # Páginas do sistema (login, dashboard, etc.)
-│   │   ├── routes/                # Rotas React
+│   │   ├── pages/
+│   │   │   ├── Login.tsx
+│   │   │   ├── Dashboard.tsx
+│   │   │   ├── Materiais/
+│   │   │   │   └── MateriaisPage.tsx
+│   │   │   ├── Processos/
+│   │   │   │   ├── RegistroProcessoPage.tsx
+│   │   │   │   └── MeusProcessosPage.tsx
+│   │   │   ├── Rastreabilidade/
+│   │   │   │   └── RastreabilidadePage.tsx
+│   │   │   ├── Relatorios/
+│   │   │   │   └── RelatoriosPage.tsx
+│   │   │   └── Usuarios/
+│   │   │       └── UsuariosPage.tsx
+│   │   ├── routes/
+│   │   │   ├── AppRoutes.tsx
+│   │   │   └── PrivateRoute.tsx
 │   │   ├── App.tsx
-│   │   └── main.tsx
-│   └── Dockerfile
+│   │   ├── main.tsx
+│   │   └── vite-env.d.ts
+│   ├── Dockerfile
+│   ├── package.json
+│   ├── tsconfig.json
+│   └── vite.config.ts
 │
 ├── docker-compose.yml
-└── README.md
+├── README.md
+└── .gitignore
+
 ```
 
 # Sistema CME - Central de Materiais e Esterilização
