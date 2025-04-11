@@ -116,6 +116,10 @@ cme-system/
 
 ```
 
+## Arquitetura do Sistema
+![Arquitetura do Sistema](docs\arquitetura_cme.png)
+
+
 # Sistema CME - Central de Materiais e Esterilização
 
 Este projeto é um sistema para controle e rastreabilidade de materiais hospitalares esterilizados, desenvolvido como desafio técnico do Grupo Bringel.
