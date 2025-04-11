@@ -153,8 +153,7 @@ Este projeto é um sistema para controle e rastreabilidade de materiais hospital
 ---
 ## 🎥 Demonstração do Sistema
 
-[![Assista à demonstração](https://youtu.be/eLGbiJ0Kttk)]
----
+[![Assista à demonstração](https://github.com/paulovitor21/cme-system/blob/main/docs/capa_video.png)](https://youtu.be/eLGbiJ0Kttk)
 
 ## 🚀 Como executar o projeto
 
