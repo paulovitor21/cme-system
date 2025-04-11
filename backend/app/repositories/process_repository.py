@@ -9,7 +9,7 @@ from datetime import datetime
 class ProcessoRepository:
 
     def registrar_etapa(self, db: Session, dados: ProcessoCreate, usuario_id: str) -> Processo:
-        # ⚠️ Verificar duplicidade da etapa
+        # Verificar duplicidade da etapa
         etapa_existente = db.query(Processo).filter_by(
             serial=dados.serial,
             etapa=dados.etapa

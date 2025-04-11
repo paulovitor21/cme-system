@@ -65,6 +65,7 @@ def is_nurse(user=Depends(get_current_user)):
         raise HTTPException(status_code=403, detail="Acesso restrito ao usuário ENFERMAGEM")
     return user
 
+# Dependência para TÉCNICO
 def is_technician(user=Depends(get_current_user)):
     if user.role != UserRole.TECHNICIAN:
         raise HTTPException(status_code=403, detail="Acesso restrito ao usuário TÉCNICO")

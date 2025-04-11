@@ -5,14 +5,7 @@ from uuid import uuid4
 from datetime import datetime
 
 class MaterialRepository:
-    # def generate_serial(self, nome: str) -> str:
-    #     # Gera um serial único baseado no nome + UUID simples
-    #     base = nome.replace(" ", "-").upper()
-    #     unique = uuid4().hex[:6].upper()
-    #     return f"{base}-{unique}"
-
     def create_material(self, db: Session, material_data: MaterialCreate) -> Material:
-        #serial = self.generate_serial(material_data.nome)
         serial = gerar_serial(material_data.nome)
 
 

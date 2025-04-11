@@ -24,7 +24,7 @@ DATABASE_URL = os.getenv("DATABASE_URL", "postgresql://postgres:%40manaus@db:543
 # Criar engine do SQLAlchemy
 engine = create_engine(DATABASE_URL)
 
-# Criar fábrica de sessões
+# Criar sessões
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 # Função para obter a sessão do banco de dados

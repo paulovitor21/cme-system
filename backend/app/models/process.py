@@ -1,5 +1,4 @@
 # app/models/process.py
-
 from sqlalchemy import Column, String, DateTime, Enum, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
 from datetime import datetime
@@ -7,9 +6,7 @@ from uuid import uuid4
 from enum import Enum as PyEnum
 from pydantic import BaseModel, Field
 from typing import Optional
-from app.models import Base  # mesma coisa aqui
-
-
+from app.models import Base
 
 # Enum com as etapas do processo
 class EtapaEnum(str, PyEnum):
@@ -36,7 +33,6 @@ class Processo(Base):
     data_hora = Column(DateTime, default=datetime.utcnow)
 
 # Schemas Pydantic
-
 class ProcessoBase(BaseModel):
     serial: str
     etapa: EtapaEnum

@@ -4,10 +4,8 @@ from typing import List
 from app.models.process import ProcessoCreate, ProcessoResponse
 from app.repositories.process_repository import ProcessoRepository
 from app.repositories.material_repository import MaterialRepository  # Novo
-
 from fastapi.responses import StreamingResponse
 from app.utils.xlsx_generator import generate_xlsx_report
-
 from app.database import get_db_session
 from app.utils.auth import is_nurse, is_technician, get_current_user
 
@@ -17,7 +15,7 @@ router = APIRouter(
 )
 
 repo = ProcessoRepository()
-material_repo = MaterialRepository()  # Novo
+material_repo = MaterialRepository()
 
 # Registrar etapa - Apenas técnico
 @router.post("/", response_model=ProcessoResponse, status_code=status.HTTP_201_CREATED)

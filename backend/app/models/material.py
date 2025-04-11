@@ -4,9 +4,8 @@ from datetime import datetime, date
 from uuid import uuid4
 from pydantic import BaseModel, Field
 from typing import Optional
-from app.models import Base  # mesma coisa aqui
+from app.models import Base
 
-# 
 # Modelo SQLAlchemy
 class Material(Base):
     __tablename__ = "materiais"
@@ -19,7 +18,6 @@ class Material(Base):
     created_at = Column(DateTime, default=datetime.utcnow)
 
 # Schemas Pydantic
-
 class MaterialBase(BaseModel):
     nome: str
     tipo: str

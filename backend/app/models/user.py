@@ -6,7 +6,7 @@ import uuid
 from sqlalchemy import Column, String, Boolean, DateTime, ForeignKey, Integer, Enum as SQLEnum
 from sqlalchemy.ext.declarative import declarative_base
 from passlib.context import CryptContext
-from app.models import Base  # ao invés de criar uma nova Base
+from app.models import Base
 
 # Configuração do bcrypt para hash de senhas
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
