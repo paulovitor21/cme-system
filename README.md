@@ -1,69 +1,88 @@
-```
-    cme-system/
-    │
-    ├── backend/
-    │   ├── app/
-    │   │   ├── __init__.py
-    │   │   ├── main.py                  # Arquivo principal da aplicação
-    │   │   ├── database.py              # Configuração do banco de dados
-    │   │   ├── models/
-    │   │   │   ├── __init__.py
-    │   │   │   ├── user.py              # Modelos de usuário
-    │   │   │   └── material.py          # Modelos de materiais (a ser implementado)
-    │   │   ├── repositories/
-    │   │   │   ├── __init__.py
-    │   │   │   ├── user_repository.py   # Repositório de usuários
-    │   │   │   └── material_repository.py  # Repositório de materiais (a ser implementado)
-    │   │   ├── routes/
-    │   │   │   ├── __init__.py
-    │   │   │   ├── user_routes.py       # Rotas de API para usuários
-    │   │   │   └── material_routes.py   # Rotas de API para materiais (a ser implementado)
-    │   │   └── utils/
-    │   │       ├── __init__.py
-    │   │       ├── auth.py              # Utilidades de autenticação
-    │   │       └── pdf_generator.py     # Gerador de PDF (a ser implementado)
-    │   ├── Dockerfile                   # Dockerfile do backend
-    │   └── requirements.txt             # Dependências Python
-    │
-    ├── frontend/
-    │   ├── public/
-    │   │   ├── index.html
-    │   │   └── favicon.ico
-    │   ├── src/
-    │   │   ├── components/
-    │   │   │   ├── auth/
-    │   │   │   │   ├── Login.jsx
-    │   │   │   │   └── PrivateRoute.jsx
-    │   │   │   ├── users/
-    │   │   │   │   ├── UserForm.jsx
-    │   │   │   │   ├── UserList.jsx
-    │   │   │   │   └── UserDetails.jsx
-    │   │   │   ├── materials/
-    │   │   │   │   ├── MaterialForm.jsx
-    │   │   │   │   ├── MaterialList.jsx
-    │   │   │   │   └── MaterialDetails.jsx
-    │   │   │   └── process/
-    │   │   │       ├── ProcessSteps.jsx
-    │   │   │       └── Tracking.jsx
-    │   │   ├── services/
-    │   │   │   ├── api.js
-    │   │   │   ├── authService.js
-    │   │   │   ├── userService.js
-    │   │   │   └── materialService.js
-    │   │   ├── context/
-    │   │   │   └── AuthContext.js
-    │   │   ├── App.jsx
-    │   │   └── index.js
-    │   ├── package.json
-    │   └── Dockerfile                   # Dockerfile do frontend
-    │
-    ├── docker-compose.yml               # Configuração do Docker Compose
-    └── README.md                        # Documentação do projeto
+# Sistema CME (Central de Materiais e Esterilização)
+
+Este projeto é um sistema web desenvolvido como parte do Desafio Técnico Full Stack do Grupo Bringel. O objetivo é auxiliar no controle e rastreabilidade de materiais hospitalares esterilizados.
+
+## 🧩 Tecnologias Utilizadas
+
+- **Frontend**: React + Vite + TypeScript + Bootstrap
+- **Backend**: Python + FastAPI + SQLAlchemy + JWT Auth
+- **Banco de Dados**: PostgreSQL
+- **Containerização**: Docker + Docker Compose
+
+---
+
+## 🧠 Funcionalidades
+
+### 👤 Gerenciamento de Usuários
+
+- **Administrador**:
+  - Cadastra novos usuários (admin, técnico e enfermagem)
+  - Gerencia usuários existentes
+
+- **Técnico**:
+  - Cadastra materiais
+  - Registra etapas do processo de esterilização
+
+- **Enfermagem**:
+  - Consulta rastreabilidade dos materiais
+  - Gera relatórios PDF/XLSX
+
+### 📦 Cadastro de Materiais
+
+- Nome
+- Tipo
+- Validade
+- Serial gerado automaticamente
+
+### 🔁 Processo de Esterilização
+
+Os materiais passam pelas seguintes etapas:
+
+1. Recebimento
+2. Lavagem
+3. Esterilização
+4. Distribuição
+
+Cada etapa pode ter status `concluído` ou `falha`.
+
+### 🔎 Rastreabilidade
+
+- Filtrar histórico de etapas por serial
+- Visualizar falhas associadas a um serial
+- Contagem de ciclos completos (4 etapas = 1 ciclo)
+- Exportar relatórios em PDF ou XLSX
+
+---
+
+## 📁 Estrutura do Projeto
+
+```text
+cme-system/
+├── backend/
+│   ├── app/
+│   │   ├── database/              # Configurações do banco
+│   │   ├── models/                # Modelos Pydantic e SQLAlchemy
+│   │   ├── repositories/          # Regras de negócio
+│   │   ├── routes/                # Rotas da API
+│   │   ├── utils/                 # Utilitários (auth, PDF/XLSX, etc.)
+│   │   └── main.py                # Entrada principal da API
+│   └── Dockerfile
+│
+├── frontend/
+│   ├── src/
+│   │   ├── pages/                 # Páginas do sistema (login, dashboard, etc.)
+│   │   ├── routes/                # Rotas React
+│   │   ├── App.tsx
+│   │   └── main.tsx
+│   └── Dockerfile
+│
+├── docker-compose.yml
+└── README.md
 ```
 
 # Sistema CME - Central de Materiais e Esterilização
 
-Este projeto é um sistema completo para controle e rastreabilidade de materiais hospitalares esterilizados, desenvolvido como desafio técnico do Grupo Bringel.
+Este projeto é um sistema para controle e rastreabilidade de materiais hospitalares esterilizados, desenvolvido como desafio técnico do Grupo Bringel.
 
 ## 🔧 Tecnologias utilizadas
 
@@ -102,6 +121,29 @@ Este projeto é um sistema completo para controle e rastreabilidade de materiais
 
 1. Clone o repositório:
 
-```bash
-git clone https://github.com/seu-usuario/cme-system.git
-cd cme-system
+```
+    git clone https://github.com/seu-usuario/cme-system.git
+    cd cme-system
+```
+2. Execute os containers com Docker Compose:
+```
+    docker-compose up --build
+```
+3. Acesse:
+    - Frontend: http://localhost:3000
+
+    - Backend (Swagger): http://localhost:8000/docs
+
+    - Banco de dados: PostgreSQL rodando em localhost:5432
+
+### 📝 Considerações
+| Funcionalidade                                             | Descrição                                                                 |
+|------------------------------------------------------------|---------------------------------------------------------------------------|
+| 🔐 Autenticação com JWT                                    | Controle de acesso baseado em token e papel do usuário (Role)            |
+| 👤 Criação automática de admin                             | Primeiro usuário admin é criado automaticamente no backend               |
+| 🔢 Geração de Serial Automático                            | Cada material recebe um serial gerado com base no nome                   |
+| ✅ Commits Semânticos                                       | Histórico do projeto documentado com padrões de commit                   |
+| 👥 Testado com Múltiplos Perfis                            | Usuários Técnico, Enfermagem e Administrativo testados
+
+🧠 Desenvolvido por
+- Paulo Vitor Pereira
