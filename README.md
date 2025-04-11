@@ -117,7 +117,7 @@ cme-system/
 ```
 
 ## Arquitetura do Sistema
-![Arquitetura do Sistema](docs\arquitetura_cme.png)
+![Arquitetura do Sistema](https://github.com/paulovitor21/cme-system/blob/main/docs/arquitetura_cme.png)
 
 
 # Sistema CME - Central de Materiais e Esterilização
