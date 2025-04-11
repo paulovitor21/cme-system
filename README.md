@@ -153,8 +153,7 @@ Este projeto é um sistema para controle e rastreabilidade de materiais hospital
 ---
 ## 🎥 Demonstração do Sistema
 
-[![Assista à demonstração](https://img.youtube.com/vi/ID_DO_VIDEO/0.jpg)](https://youtu.be/eLGbiJ0Kttk)
-
+[![Assista à demonstração](https://img.youtube.com/vi/ID_DO_VIDEO/0.jpg)]
 ---
 
 ## 🚀 Como executar o projeto
@@ -180,6 +179,10 @@ Este projeto é um sistema para controle e rastreabilidade de materiais hospital
     - Backend (Swagger): http://localhost:8000/docs
 
     - Banco de dados: PostgreSQL rodando em localhost:5432
+
+    ### Credenciais de Acesso
+      - admin@cme.com
+      - admin123
 
 ### 📝 Considerações
 | Funcionalidade                                             | Descrição                                                                 |
