@@ -153,7 +153,7 @@ Este projeto é um sistema para controle e rastreabilidade de materiais hospital
 ---
 ## 🎥 Demonstração do Sistema
 
-[![Assista à demonstração](https://img.youtube.com/vi/ID_DO_VIDEO/0.jpg)]
+[![Assista à demonstração](https://youtu.be/eLGbiJ0Kttk)]
 ---
 
 ## 🚀 Como executar o projeto
